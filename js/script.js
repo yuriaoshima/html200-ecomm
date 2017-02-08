@@ -48,3 +48,10 @@ var products = [
     "imageTitle": "twill.jpg"
   }
 ]
+
+/*loop to print out name, description and price for each item*/
+for (var i = 0; i < products.length; i++) {
+  console.log("name: " + products[i].name);
+  console.log("description: " + products[i].description);
+  console.log("price: " + products[i].price);
+}

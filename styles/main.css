@@ -1,0 +1,65 @@
+body {
+  font-size: 100%;
+  width: 95%;
+  margin: auto;
+}
+
+h1 {
+  font-size: 200%;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 150%;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+  background-color: deepskyblue;
+  color: white;
+  padding: 0.5rem 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 120%;
+}
+
+.item-container {
+  display: flex;
+  width: 33%;
+}
+
+img {
+  max-width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+label {
+  font-weight: bold;
+}
+
+select {
+  width: 100%;
+  margin-top: 0.5rem;
+  border: 0.1rem solid deepskyblue;
+}
+
+input[type=submit] {
+  background-color: deepskyblue;
+  border-radius: 0.3rem;
+  border: 0.2rem solid deepskyblue;
+  color: white;
+  margin-top: 0.1rem;
+}

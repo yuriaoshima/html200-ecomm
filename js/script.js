@@ -55,3 +55,9 @@ for (var i = 0; i < products.length; i++) {
   console.log("description: " + products[i].description);
   console.log("price: " + products[i].price);
 }
+
+//form handler to be triggered on submit. Will print to the console the value of the element with the name "filter"
+function capture() {
+  console.log(document.filterBy.filter.value);
+  event.preventDefault();
+}

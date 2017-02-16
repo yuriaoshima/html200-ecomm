@@ -20,7 +20,7 @@ nav ul {
   flex-wrap: wrap;
   justify-content: space-around;
   margin-bottom: 1rem;
-  background-color: deepskyblue;
+  background-color: #73B1B7;
   color: white;
   padding: 0.5rem 0;
 }
@@ -40,10 +40,14 @@ img {
   max-width: 100%;
 }
 
+aside {
+  float: left;
+}
+
 form {
   display: flex;
   flex-direction: column;
-  width: 25%;
+  padding-right: 1rem;
 }
 
 label {
@@ -53,13 +57,13 @@ label {
 select {
   width: 100%;
   margin-top: 0.5rem;
-  border: 0.1rem solid deepskyblue;
+  border: 0.1rem solid #73B1B7;
 }
 
 input[type=submit] {
-  background-color: deepskyblue;
+  background-color: #73B1B7;
   border-radius: 0.3rem;
-  border: 0.2rem solid deepskyblue;
+  border: 0.2rem solid #73B1B7;
   color: white;
   margin-top: 0.1rem;
 }

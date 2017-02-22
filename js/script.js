@@ -61,3 +61,15 @@ function capture() {
   console.log(document.filterBy.filter.value);
   event.preventDefault();
 }
+
+/*if we have an array of JSON objects each of which has a price attribute, how can we get the sum of all the prices?*/
+function sumPrices(cartArray) {
+  var sum = 0;
+  for (var i = 0; i < cartArray.length; i++) {
+    /*cartArray[i] means the json item at that index in the array. We access the price of the item using ".price"*/
+    sum = sum + cartArray[i].price;
+  }
+  console.log(sum);
+}
+
+sumPrices(products);

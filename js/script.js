@@ -1,3 +1,5 @@
+/*syntax to declare an empty array*/
+var cart = [];
 var products = [
   {
     "name": "Reversible Plaid",
@@ -71,5 +73,23 @@ function sumPrices(cartArray) {
   }
   console.log(sum);
 }
-
 sumPrices(products);
+
+/////////////////////////////////////////////////////////////
+/*adding and removing items from cart*/
+function addItem(item) {
+  /*checks to see if the item is in the cart array. If not, the index returned is -1*/
+  var index = cart.indexOf(item);
+  if (index == -1) {
+    cart.push(item);
+  }
+  console.log(cart);
+}
+
+function remove(item) {
+  var index = cart.indexOf(item);
+  if (index != -1) {
+    cart.splice(index, 1);
+  }
+  console.log(cart);
+}

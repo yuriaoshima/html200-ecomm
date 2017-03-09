@@ -1,5 +1,6 @@
 /*syntax to declare an empty array*/
 var cart = [];
+
 var products = [
   {
     "name": "Reversible Plaid",
@@ -58,13 +59,7 @@ for (var i = 0; i < products.length; i++) {
   console.log("price: " + products[i].price);
 }
 
-//form handler to be triggered on submit. Will print to the console the value of the element with the name "filter"
-function capture() {
-  console.log(document.filterBy.filter.value);
-  event.preventDefault();
-}
-
-/*if we have an array of JSON objects each of which has a price attribute, how can we get the sum of all the prices?*/
+/*loops through the product array and adds the prices together*/
 function sumPrices(cartArray) {
   var sum = 0;
   for (var i = 0; i < cartArray.length; i++) {
@@ -73,6 +68,7 @@ function sumPrices(cartArray) {
   }
   console.log(sum);
 }
+/*calls the sumPrices function with the products array*/
 sumPrices(products);
 
 /////////////////////////////////////////////////////////////
@@ -80,16 +76,67 @@ sumPrices(products);
 function addItem(item) {
   /*checks to see if the item is in the cart array. If not, the index returned is -1*/
   var index = cart.indexOf(item);
+  /*if the item is not in the cart, then push the item into the cart array*/
   if (index == -1) {
     cart.push(item);
   }
   console.log(cart);
 }
 
+/*removes an item from the cart as long as the item exists in the cart in the first place*/
 function remove(item) {
+  /*if the item is in the cart, then we should return an index that is not -1*/
   var index = cart.indexOf(item);
+  /*if item is in cart, remove it from cart*/
   if (index != -1) {
     cart.splice(index, 1);
   }
   console.log(cart);
+}
+
+/////////////////////////////////////////////////////////////
+/*functions used to sort the products array based on whether name or price is chosen as the filter value
+////////////////////////////////////////////////////////////
+/*when using the compare function, you must return negative number if a < b, positive number is a > b and 0 if a equals b. You can use -1, 0, and 1 but in certain cases it's easier to just use a-b*/ 
+function sortByName(a, b) {
+  if (a.name.toLowerCase() < b.name.toLowerCase()) {
+    return -1;
+  } else if (a.name.toLowerCase() > b.name.toLowerCase()) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+/*check here for explanation on how sort(compareFunc) works: http://stackoverflow.com/questions/6567941/how-does-sort-function-work-in-javascript-along-with-compare-function*/
+function sortByPrice(a, b) {
+  return a.price - b.price;
+}
+
+//form handler to be triggered on submit. Will print to the console the value of 'filter' and also sort items in the product array in the filter order choosen*/
+function capture() {
+  /*saves the filter value of either price or name*/
+  var filterValue = document.filterBy.filter.value;
+  console.log(filterValue);
+  if (filterValue == "price") {
+    /*sort the products array by price*/
+    products.sort(sortByPrice);
+    /*print out the products array in its entirety*/
+    console.log(products);
+    /*print out just the prices for clarity*/
+    for (var i = 0; i < products.length; i++) {
+      console.log(products[i].price);
+    }
+  }
+  if (filterValue == "name") {
+    /*sort products array by name*/
+    products.sort(sortByName);
+    /*print out the array in its entirety*/
+    console.log(products);
+    /*print out just the names for clarity*/
+    for (var i = 0; i < products.length; i++) {
+      console.log(products[i].name);
+    }
+  }
+  event.preventDefault();
 }

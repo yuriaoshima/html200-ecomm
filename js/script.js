@@ -6,7 +6,10 @@ var products = [
     "name": "Reversible Plaid",
     "price": 26.99,
     "description": "Two classic patterns in one great look: This supersoft and cozy reversible scarf instantly doubles your street-style cred. 100% acrylic.",
-    "imageTitle": "reversible-plaid.jpg"
+    "imageTitle": "reversible-plaid.jpg",
+    "srcset": "images/reversible-plaid_125.jpg 125w, images/reversible-plaid_250.jpg 250w, images/reversible-plaid_500.jpg 500w",
+    "sizes": "(max-width: 500px) 125px, (max-width: 1400px) 250px, (min-width: 1401px) 500px",
+    "alt": "Reversible Plaid Scarf"
   },
   {
     "name": "Wool Cable Knit",
@@ -52,13 +55,6 @@ var products = [
   }
 ]
 
-/*loop to print out name, description and price for each item*/
-for (var i = 0; i < products.length; i++) {
-  console.log("name: " + products[i].name);
-  console.log("description: " + products[i].description);
-  console.log("price: " + products[i].price);
-}
-
 /*loops through the product array and adds the prices together*/
 function sumPrices(cartArray) {
   var sum = 0;
@@ -68,8 +64,6 @@ function sumPrices(cartArray) {
   }
   console.log(sum);
 }
-/*calls the sumPrices function with the products array*/
-sumPrices(products);
 
 /////////////////////////////////////////////////////////////
 /*adding and removing items from cart*/
@@ -80,6 +74,9 @@ function addItem(item) {
   if (index == -1) {
     cart.push(item);
   }
+  var output = " " + cart.length;
+  var cartItems = document.getElementById('items');
+  cartItems.innerHTML = output;
   console.log(cart);
 }
 
@@ -90,6 +87,13 @@ function remove(item) {
   /*if item is in cart, remove it from cart*/
   if (index != -1) {
     cart.splice(index, 1);
+  }
+  var output = "<p>" + cart.length + "</p>";
+  var cartItems = document.getElementById('items');
+  if (cart.length == 0) {
+    cartItems.innerHTML = "";
+  } else {
+    cartItems.innerHTML = output;
   }
   console.log(cart);
 }
@@ -139,4 +143,19 @@ function capture() {
     }
   }
   event.preventDefault();
+}
+
+//these functions need to be loaded after the HTML is loaded
+//into the window
+//all others not in this function are user initiated or variables
+window.onload = function() {
+  /*loop to print out name, description and price for each item*/
+  for (var i = 0; i < products.length; i++) {
+    console.log("name: " + products[i].name);
+    console.log("description: " + products[i].description);
+    console.log("price: " + products[i].price);
+  }
+
+  /*calls the sumPrices function with the products array*/
+  sumPrices(products);
 }

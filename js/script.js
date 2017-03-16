@@ -70,13 +70,15 @@ function sumPrices(cartArray) {
 function addItem(item) {
   /*checks to see if the item is in the cart array. If not, the index returned is -1*/
   var index = cart.indexOf(item);
+  var cartItems;
+  var output;
   /*if the item is not in the cart, then push the item into the cart array*/
   if (index == -1) {
     cart.push(item);
+    output = " " + cart.length;
+    cartItems = document.getElementById('items');
+    cartItems.innerHTML = output;
   }
-  var output = " " + cart.length;
-  var cartItems = document.getElementById('items');
-  cartItems.innerHTML = output;
   console.log(cart);
 }
 
@@ -84,16 +86,18 @@ function addItem(item) {
 function remove(item) {
   /*if the item is in the cart, then we should return an index that is not -1*/
   var index = cart.indexOf(item);
+  var output;
+  var cartItems;
   /*if item is in cart, remove it from cart*/
   if (index != -1) {
     cart.splice(index, 1);
-  }
-  var output = "<p>" + cart.length + "</p>";
-  var cartItems = document.getElementById('items');
-  if (cart.length == 0) {
-    cartItems.innerHTML = "";
-  } else {
-    cartItems.innerHTML = output;
+    output = "<p>" + cart.length + "</p>";
+    cartItems = document.getElementById('items');
+    if (cart.length == 0) {
+      cartItems.innerHTML = "";
+    } else {
+      cartItems.innerHTML = output;
+    }
   }
   console.log(cart);
 }
